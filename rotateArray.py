@@ -53,3 +53,14 @@ def rotateArr(self,A,D,N):
         reverse(A,0,N-1)
         
         return A
+
+'''
+Approach 3
+
+use list slicing
+'''
+def rotateArr(self,A,D,N):
+        #Your code here
+        D = D%N
+        A[:] = A[D:N]+A[0:D]
+        return A
