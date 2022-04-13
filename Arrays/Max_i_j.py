@@ -1,4 +1,32 @@
 '''
+Approach
+'''
+
+
+def maxIndexDiff(arr, n):
+    maxDiff = -1
+    for i in range(n):
+        j = n-1
+        while (j>i):
+            if(arr[j] > arr[i]):
+                maxDiff = max(maxDiff,j-i)
+            else:
+                j -= 1
+        
+    return maxDiff
+
+def main():
+    arr = [9, 2, 3, 4, 5, 6, 7, 8, 18, 0]
+    n = len(arr)
+    maxDiff = maxIndexDiff(arr, n)
+    print(maxDiff)
+
+if __name__ == '__main__':
+    main()
+
+
+
+'''
 i is from 0 
 j is from end
 '''
