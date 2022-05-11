@@ -45,3 +45,15 @@ print(t2.__baz) #AttributeError: 'ExtendedTest' object has no attribute '__baz'
 
 print(t2._ExtendedTest__baz) # 'overridden'
 print(t2._Test__baz) # '42'
+
+
+## Double trailing and leading underscores: __var__
+Indicates special functions defined by python language, avaoid using these for naming attributes. These are also known as dunders in python community and are sometimes referred as magic functions. e.g. __init__
+
+## Single underscore:
+This is used in python to signify that the result is not important example for _ in range(0,9) here _ means that we don't care about the value.
+Sometimes in interpretter _ is also used to know the ouput of previous command. e.g.
+- 2+3 
+- 5
+- _
+- 5
