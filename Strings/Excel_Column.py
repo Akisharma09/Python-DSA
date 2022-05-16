@@ -20,7 +20,7 @@ def excelColumn(n):
     while n>0:
         if n%26 == 0:
             column_name += 'Z'
-            n //= 26
+            n = n//26 -1
         else:
             column_name += chr(n%26 + ord('A') -1) # n = 1 column name should be 'A'
             n //= 26
@@ -28,7 +28,7 @@ def excelColumn(n):
     return column_name[::-1]
 
 def main():
-    print(excelColumn(702))
+    print(excelColumn(53))
     
 
 if __name__ == '__main__':
