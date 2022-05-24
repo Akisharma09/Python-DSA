@@ -1,7 +1,10 @@
 """
 Remove duplicate in unsorted linked list
+Approach: Use hash/set 
 
-Approach is use hash/set 
+Remove duplicate from sorted
+Approach: if current.data == current.next.data then current.next = current.next.next else current = current.next
+
 """
 class Node:
     def __init__(self,data):
@@ -24,7 +27,7 @@ class linkedList:
             start = start.next 
         print(start.data)
     
-    def deleteDup(self):
+    def deleteDupUnsorted(self):
         hash_ = set()
         start = self.head
         
@@ -38,6 +41,17 @@ class linkedList:
         
         if start.data in hash_:
             start = None
+    
+    def removeDupSorted(self):
+        start = self.head 
+        while(start.next is not None):
+            if start.data == start.next.data:
+                if start.next.next is not None:
+                    start.next = start.next.next
+                else:
+                    start.next = None
+            else:
+                start = start.next 
         
     
 if __name__ == '__main__':
@@ -50,6 +64,22 @@ if __name__ == '__main__':
     ll.push(14)
     
     print('Deleting duplicate')
-    ll.deleteDup()
+    ll.deleteDupUnsorted()
     
     ll.printLinkedList()
+    
+    l2 = linkedList()
+
+    l2.push(4)
+    l2.push(4)
+    l2.push(3)
+    l2.push(2)
+    l2.push(2)
+    l2.push(1)
+    l2.removeDupSorted()
+    
+    print('Deleting duplicate')
+    ll.deleteDupUnsorted()
+    
+    l2.printLinkedList()
+    
