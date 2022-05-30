@@ -1,3 +1,41 @@
+
+def mergeSortedArrays(a,b):
+    i = 0
+    j = 0
+    sorted_array = []
+    
+    while (i < len(a) and j < len(b)):
+        if(a[i] <= b[j]):
+            sorted_array.append(a[i])
+            i+=1
+        else:
+            sorted_array.append(b[j])
+            j+=1
+    
+    while i < len(a):
+        sorted_array.append(a[i])
+        i+=1
+    while j < len(b):
+        sorted_array.append(b[j])
+        j+=1
+        
+    return sorted_array
+
+def mergeSort(arr):
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr)//2
+    left = arr[:mid]
+    right = arr[mid:]
+    
+    left = mergeSort(left)
+    right = mergeSort(right)
+    
+    sorted_array = mergeSortedArrays(left, right)
+    
+    return sorted_array
+            
+
 def swap(arr,a,b):
     arr[a], arr[b] = arr[b], arr[a]
 
@@ -62,10 +100,12 @@ def insertionSort(arr):
     for i in range(1,len(arr)-1):
         anchor = arr[i]
         j = i-1
-        while j > 0 and arr[j]> anchor:
+        while j >= 0 and arr[j]> anchor:
             arr[j+1] = arr[j]
             j -=1
         arr[j+1] = anchor
+    
+    return arr
     
 
 if __name__ == '__main__':
@@ -82,5 +122,9 @@ if __name__ == '__main__':
     print('quick sort lomuto result is: {}'.format(elements))
     
     elements = [11,9,29,38,2,15,28]
-    insertionSort(elements)
+    elements = insertionSort(elements)
     print('insertion sort result is: {}'.format(elements))
+    
+    elements = [11,9,29,38,2,15,28]
+    elements = mergeSort(elements)
+    print('merge sort result is: {}'.format(elements))
